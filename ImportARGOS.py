@@ -16,11 +16,10 @@ import sys, os, arcpy
 #Allow arcpy to overwrite outputs
 arcpy.env.overwriteOutput = True
 
-# Set input variables (Hard-wired)
-#inputFile = 'V:\\ARGOSTracking\\Data\\ARGOSData\\1997dg.txt'
-inputFolder = "V:\\ARGOSTracking\\Data\\ARGOSdata"
-outputFC = "V:/ARGOSTracking/Scratch/ARGOStrack.shp"
-outputSR = arcpy.SpatialReference(54002)
+# Set input variables 
+inputFolder = arcpy.GetParameterAsText(0)
+outputFC = arcpy.GetParameterAsText(1)
+outputSR = arcpy.GetParameterAsText(2)
 
 #Create an empty featureclass to which we will add features
 outPath, outName = os.path.split(outputFC)
